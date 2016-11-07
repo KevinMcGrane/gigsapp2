@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Gig_name:</strong>
+  <%= @gig.gig_name %>
+</p>
+<p>
+  <strong>Artist:</strong>
+  <%= @gig.artist %>
+</p>
+
+<p>
+  <strong>Venue:</strong>
+  <%= @gig.venue.name %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @gig.date %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @gig.start_time %>
+</p>
+
+<p>
+  <strong>Tickets remaining:</strong>
+  <%= @gig.tickets_remaining %>
+</p>
+
+<%= link_to 'Edit', edit_gig_path(@gig) %> |
+<%= link_to 'Back', gigs_path %>

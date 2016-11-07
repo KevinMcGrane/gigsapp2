@@ -1,0 +1,41 @@
+<%= form_for(@gig) do |f| %>
+  <% if @gig.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@gig.errors.count, "error") %> prohibited this gig from being saved:</h2>
+
+      <ul>
+      <% @gig.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <div class="field">
+    <%= f.label :Event_name %><br>
+    <%= f.text_field :gig_name %>
+  </div>
+ <div class="field">
+    <%= f.label :artist %><br>
+    <%= f.text_field :artist %>
+  </div>
+  <div class="field">
+    <%= f.label :venue_id %><br>
+    <%= f.collection_select :venue_id, Venue.all, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :start_time %><br>
+    <%= f.text_field :start_time %>
+  </div>
+  <div class="field">
+    <%= f.label :tickets_remaining %><br>
+    <%= f.number_field :tickets_remaining %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

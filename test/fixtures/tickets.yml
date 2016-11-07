@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gig_id: 1
+  user_id: 1
+  price: MyString
+  over_18s: false
+
+two:
+  gig_id: 1
+  user_id: 1
+  price: MyString
+  over_18s: false
