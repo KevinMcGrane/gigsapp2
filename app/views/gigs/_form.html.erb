@@ -35,6 +35,15 @@
     <%= f.label :tickets_remaining %><br>
     <%= f.number_field :tickets_remaining %>
   </div>
+   <div class="field">
+    <%= f.label :image %><br>
+    <%= f.text_field :image %>
+  </div>
+	
+	<%= f.label :attachment %>
+	<%= f.file_field :attachment %>
+	
+	
   <div class="actions">
     <%= f.submit %>
   </div>

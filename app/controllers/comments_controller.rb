@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 before_action :authorise
+
+	
 	
 	def create
 		@venue = Venue.find params[:venue_id]

@@ -60,6 +60,17 @@ class GigsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def search
+	@gigs =Gig.search params[:query]
+	unless @gigs.empty? #if !@modelnames.empty?
+		render 'index' #will only show records matching the search
+	else
+		flash[:notice] = 'No record matches that search'
+		render 'index'
+	end
+	end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -69,6 +80,6 @@ class GigsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gig_params
-      params.require(:gig).permit(:artist, :venue_id, :date, :start_time, :tickets_remaining, :gig_name)
+      params.require(:gig).permit(:artist, :venue_id, :date, :start_time, :tickets_remaining, :gig_name, :image, :attachment)
     end
 end

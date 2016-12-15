@@ -4,6 +4,8 @@ class Venue < ActiveRecord::Base
 	validates :name, presence: true
 	validates :location, presence: true
 	validates :capacity, presence: true
+	geocoded_by :location
+	after_validation :geocode, :if => :location_changed?
 	
 	def average_stars
 	

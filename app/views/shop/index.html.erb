@@ -1,0 +1,28 @@
+<div class="container">
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1>Welcome to TicketKing <img src="/assets/dj.jpg" alt="Tickets" style="width:304px;height:228px;"></h1>
+                <p class="lead">You can view venues, upcoming events, and purchase tickets</p>
+                <ul class="list-unstyled">
+                     <li>New user? <%= link_to "Register Now!", new_user_path %></li>
+                    <li>Existing user? <%=link_to "Sign in", login_path %></li>
+                </ul>
+				Site by KevinMcGrane
+				<br><a href="https://github.com/KevinMcGrane">Kevins GitHub</a></br>
+				<h3>Buy tickets below</h3>
+					<% if !@tickets.empty? %>
+					<% @tickets.each do |ticket| %>
+				<h9><%= ticket.gig.gig_name %></h9>
+					<%= ticket.price %>
+					<%= button_to 'Add to Cart', lineitems_path(ticket_id: ticket) %>
+				<% end %>
+			<% else %>
+			<p>There are no tickets for sale</p>
+			<% end %>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+

@@ -1,7 +1,11 @@
+<div class="col-lg-12 text-center">
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Gig_name:</strong>
+<%= image_tag(@gig.image,:size=>"300x200")%>
+</p>
+<p>
+  <strong>Gig Name:</strong>
   <%= @gig.gig_name %>
 </p>
 <p>
@@ -30,4 +34,5 @@
 </p>
 
 <%= link_to 'Edit', edit_gig_path(@gig) %> |
-<%= link_to 'Back', gigs_path %>
+<%= link_to 'Back', gigs_path %> |
+<%= link_to 'Buy Tickets', root_path %>

@@ -1,6 +1,8 @@
 source 'http://rubygems.org'
 gem 'coffee-script-source','1.8.0'
 gem 'bootstrap-sass'
+gem 'geocoder'
+gem 'carrierwave' 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record

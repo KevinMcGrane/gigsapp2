@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
+  resources :orders
+  get 'shop/index'
+
+	resources :lineitems
+	resources :carts do
+		resources :lineitems
+	end
 	resources :venues do
 		resources :comments
 	end
+	
+	get 'search', :to=> 'gigs#search'
 
   resources :comments
 	controller :sessions do
@@ -23,7 +32,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'pages#home'
+   root 'shop#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,13 +1,11 @@
+<div class="col-lg-12 text-center">
 <p id="notice"><%= notice %></p>
-
+<p>
+<%= image_tag(@venue.image,:size=>"300x200")%>
+</p>
 <p>
   <strong>Name:</strong>
   <%= @venue.name %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @venue.location %>
 </p>
 
 <p>
@@ -16,11 +14,35 @@
 </p>
 
 <p>
-  <strong>Image:</strong>
-  <%= @venue.image %>
+  <strong>Location:</strong>
+  <%= @venue.location %>
 </p>
 
-<h2> Rate this venue and comment:</h2>
+<p>
+  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@venue.latitude}%2C#{@venue.longitude}" %>
+</p>
+
+
+
+
+
+<%if @venue.comments.empty? %>
+	<h3> Tell others about your experience here </h3>
+<%else%>
+		<h2> What others thought of this venue </h2>
+		<%@venue.comments.reverse.each do |comment| %>
+				<p><%=comment.content%>
+				Posted <%=time_ago_in_words(comment.created_at) %> ago by
+				<%=comment.user.name%> </p>
+			<%end%>
+			<h3> Average Star Rating </h3>
+			<p>
+				<h4>
+					<%=number_with_precision(@venue.average_stars, precision: 0)%>
+				</h4>
+			</p>
+<%end%>
+<h4> Rate this venue and comment:</h24>
 	<%=form_for([@venue, Comment.new]) do |f| %>
 	
 	<h3><%= f.label :stars %>
@@ -34,20 +56,7 @@
 		<%= f.submit "Post a comment"%>
 	</div>
 <% end %>
-<%if @venue.comments.empty? %>
-	<h3> Tell others about your experience here </h3>
-<%else%>
-		<h2> What others thought of this venue </h2>
-		<%@venue.comments.reverse.each do |comment| %>
-				<p><%=comment.content%>
-				Posted <%=time_ago_in_words(comment.created_at) %> ago by
-				<%=comment.user.name%> </p>
-			<%end%>
-			<h3> Star Rating </h3>
-			<p>
-					<%=number_with_precision(@venue.average_stars, precision: 0)%>
-			</p>
-<%end%>
 
 <%= link_to 'Edit', edit_venue_path(@venue) %> |
 <%= link_to 'Back', venues_path %>
+</div>

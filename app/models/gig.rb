@@ -5,5 +5,13 @@ class Gig < ActiveRecord::Base
 	validates :artist, presence: true
 	validates :date, presence: true
 	validates :start_time, presence: true
+	mount_uploader :attachment, AttachmentUploader
+	
+	def self.search(query)
+		where("gig_name LIKE ?", "%#{query}%") 
+	end
+
+
+
 
 end
